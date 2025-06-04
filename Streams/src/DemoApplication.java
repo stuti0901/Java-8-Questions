@@ -22,7 +22,7 @@ public class DemoApplication {
         System.out.println("Employees whose name starts with A \n" + result);
 
 
-        Map<String, List<Employee>> deptWithEmployee = employees.stream().collect(Collectors.groupingBy(Employee::getDepartNames));
+        Map<String, List<Employee>> deptWithEmployee = QuestionTwo.departmentByName(employees);
         System.out.println("Group employees by department names \n"+deptWithEmployee);
 
         long count = employees.stream().count();
