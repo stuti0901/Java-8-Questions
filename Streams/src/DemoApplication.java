@@ -32,39 +32,41 @@ public class DemoApplication {
         int age=QuestionFour.maxAge(employees);
         System.out.println("Maximum age of employee "+ age);
 
-        Set<String> allDepartmentNames = employees.stream().map(Employee::getDepartNames).collect(Collectors.toSet());
+
+        List<String> allDepartmentNames=QuestionFive.deptName(employees);
         System.out.println("Name of all department "+ allDepartmentNames);
 
-        Map<String, Long> employeeCountByDepartment = employees.stream().collect(Collectors.groupingBy(Employee::getDepartNames, Collectors.counting()));
+
+        Map<String, Long> employeeCountByDepartment =QuestionSix.countEmpDepart(employees);
         System.out.println(employeeCountByDepartment);
 
-        List<Employee> ageLessThan30 = employees.stream().filter(emp -> emp.getAge() < 30).collect(Collectors.toList());
+        List<Employee> ageLessThan30 =QuestionSeven.empLess30(employees);
         System.out.println(ageLessThan30);
 
-        List<Employee> ageBetween26And30 = employees.stream().filter(emp -> emp.getAge() < 30 && emp.getAge() > 26).collect(Collectors.toList());
+        List<Employee> ageBetween26And30 =  QuestionEight.ageBetween26and30(employees);
         System.out.println(ageBetween26And30);
 
-        Map<String, Double> avgAgeOfMaleAndFemale = employees.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingInt(Employee::getAge)));
+        Map<String, Double> avgAgeOfMaleAndFemale = QuestionNine.averageAge(employees);
         System.out.println("Average age of male & female "+ avgAgeOfMaleAndFemale);
 
-        Map.Entry<String, Long> deptMaxcount = employees.stream().collect(Collectors.groupingBy(Employee::getDepartNames, Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue()).get();
-        System.out.println("Department having maximum number of employees " + deptMaxcount);
+//        Map.Entry<String, Long> deptMaxcount = employees.stream().collect(Collectors.groupingBy(Employee::getDepartNames, Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue()).get();
+//        System.out.println("Department having maximum number of employees " + deptMaxcount);
+//
+//
+//        List<Employee> chennaiEmployee = employees.stream().filter(emp -> emp.getAddress().equals("Chennai")).sorted(Comparator.comparing(Employee::getName)).collect(Collectors.toList());
+//        System.out.println("Employee staying in Chnnai and sorted by their names " + chennaiEmployee);
 
-
-        List<Employee> chennaiEmployee = employees.stream().filter(emp -> emp.getAddress().equals("Chennai")).sorted(Comparator.comparing(Employee::getName)).collect(Collectors.toList());
-        System.out.println("Employee staying in Chnnai and sorted by their names " + chennaiEmployee);
-
-        Map<String, Double> avgSalForEachDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartNames, Collectors.averagingDouble(Employee::getSalary)));
+        Map<String, Double> avgSalForEachDept =QuestionTen.deptAvgSalary(employees);
         System.out.println("Average salary of each department " + avgSalForEachDept);
 
-        Map<String, Optional<Employee>> highestSalForEachDedpt = employees.stream().collect(Collectors.groupingBy(Employee::getDepartNames, Collectors.minBy(Comparator.comparing(Employee::getSalary))));
-        System.out.println(highestSalForEachDedpt);
-
-        List<Employee> employeesWithSortedSalary = employees.stream().sorted(Comparator.comparing(Employee::getSalary)).collect(Collectors.toList());
-        System.out.println(employeesWithSortedSalary);
-
-        Employee withSecondHighestSalary = employees.stream().sorted(Comparator.comparing(Employee::getSalary)).skip(1).findFirst().get();
-        System.out.println(withSecondHighestSalary);
+//        Map<String, Optional<Employee>> highestSalForEachDedpt = employees.stream().collect(Collectors.groupingBy(Employee::getDepartNames, Collectors.minBy(Comparator.comparing(Employee::getSalary))));
+//        System.out.println(highestSalForEachDedpt);
+//
+//        List<Employee> employeesWithSortedSalary = employees.stream().sorted(Comparator.comparing(Employee::getSalary)).collect(Collectors.toList());
+//        System.out.println(employeesWithSortedSalary);
+//
+//        Employee withSecondHighestSalary = employees.stream().sorted(Comparator.comparing(Employee::getSalary)).skip(1).findFirst().get();
+//        System.out.println(withSecondHighestSalary);
     }
 
 }
