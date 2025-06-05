@@ -28,7 +28,8 @@ public class DemoApplication {
         long count = QuestionThree.countemp(employees);
         System.out.println("Total Number of employees " + count);
 
-        int age = employees.stream().mapToInt(Employee::getAge).max().getAsInt();
+        //int age = employees.stream().mapToInt(Employee::getAge).max().getAsInt();
+        int age=QuestionFour.maxAge(employees);
         System.out.println("Maximum age of employee "+ age);
 
         Set<String> allDepartmentNames = employees.stream().map(Employee::getDepartNames).collect(Collectors.toSet());
