@@ -25,7 +25,7 @@ public class DemoApplication {
         Map<String, List<Employee>> deptWithEmployee = QuestionTwo.departmentByName(employees);
         System.out.println("Group employees by department names \n"+deptWithEmployee);
 
-        long count = employees.stream().count();
+        long count = QuestionThree.countemp(employees);
         System.out.println("Total Number of employees " + count);
 
         int age = employees.stream().mapToInt(Employee::getAge).max().getAsInt();
